@@ -4,7 +4,7 @@ bucketApp.controller('dashboardController', ['$scope', 'usersFactory', 'activiti
 	$scope.activities = [];
 
 
-	var index = function() {
+	var index = function(user) {
 		usersFactory.index(function(returnedData){
 			console.log('returned data', returnedData);
 			$scope.users = returnedData;
