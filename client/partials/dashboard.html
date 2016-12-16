@@ -1,0 +1,31 @@
+<a href="#!/dashboard">Home | <a href="#!/item">Bucket List</a> | <a href="/">Logout</a>
+
+<h3>Welcome, {{user.name}}!</h3>
+
+<form>
+	<input type="text" placeholder="Title" ng-model="newActivity.title">
+	<input type="text" placeholder="Description" ng-model="newActivity.description">
+	<select ng-init="newActivity.user = users[0].name" ng-model="newActivity.user">
+		<option ng-repeat="i in users track by $index" value={{i._id}}>{{i.name}}</option>
+	</select>
+	<input type="submit" value="Create" ng-click="createActivity()">
+	</form>
+
+
+<table>
+	<tr>
+		<th>Before I die I want to:</th>
+	</tr>
+
+	<tr ng-repeat="activity in activities track by $index">
+		<td></td>
+		<td>{{activity._user.name}}</td>
+		<td>{{activity.title}}</td>
+		<td>{{activity.description}}</td>
+		<td>{{activity.createdAt | date: 'MM/dd/yyyy'}}</td>
+	</tr>
+</table>
+
+<ul>List of other users (Click to view profile):
+<li ng-repeat="i in users track by $index"><a href="/#!/show/{{i._id}}">{{i.name}}</a>
+</div>
